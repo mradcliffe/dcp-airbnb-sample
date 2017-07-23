@@ -1,0 +1,24 @@
+{
+  "name": "dcp-airbnb-sample",
+  "version": "1.0.0",
+  "description": "AirBnB Sample Code",
+  "scripts": {
+    "lint": "eslint '*.js'",
+    "test": "mocha --require test '*.spec.js'",
+    "build": "npm run-script lint && npm test"
+  },
+  "author": "Matthew Radcliffe <mradcliffe@softpixel.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.0",
+    "eslint": "~3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.4.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
