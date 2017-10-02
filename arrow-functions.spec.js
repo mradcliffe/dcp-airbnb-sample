@@ -8,14 +8,14 @@ const assert = chai.assert;
 
 describe('arrow-functions', () => {
   it('should be a btopro user', () => {
-    assert.equal('btopro', btopro.name);
+    assert.equal(btopro.name, 'btopro');
   });
 
   it('should contain a list of user ids only', () => {
-    assert.deepEqual([1, 6, 30], uids);
+    assert.deepEqual(uids, [1, 6, 30]);
   });
 
   it('should have sort mradcliffe above btopro', () => {
-    assert.equal('mradcliffe', radcliffesBeforeOllendykes[1].name);
+    assert.equal(radcliffesBeforeOllendykes[1].name, 'mradcliffe');
   });
 });

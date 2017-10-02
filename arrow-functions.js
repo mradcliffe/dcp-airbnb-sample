@@ -9,9 +9,9 @@ const btopro = fixture.find(user => user.name === 'btopro');
 const uids = fixture.map(user => user.uid);
 
 // Against func-style.
-function hasLastNameOf(user, lastname) {
+const hasLastNameOf = function hasLastNameOf(user, lastname) {
   return user.field_lastname === lastname;
-}
+};
 
 const radcliffesBeforeOllendykes = fixture.sort((aUser, bUser) => {
   if (aUser.uid < bUser.uid) {

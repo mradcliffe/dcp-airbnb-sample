@@ -19,16 +19,16 @@ describe('destructuring', () => {
   });
 
   it('should return mailto link', () => {
-    assert.equal('<a href="mailto:btopro@example.com">btopro</a>', component.formatUsername());
+    assert.equal(component.formatUsername(), '<a href="mailto:btopro@example.com">btopro</a>');
   });
 
   it('should return figure HTML', () => {
     const src = '/sites/default/files/styles/thumbnail/public/pictures/picture-6-1432257363.jpg';
-    assert.equal(`<figure><img src="${src}" /><figcaption>btopro's avatar</figcaption></figure>`, component.formatPicture());
+    assert.equal(component.formatPicture(), `<figure><img src="${src}" /><figcaption>btopro's avatar</figcaption></figure>`);
   });
 
   it('should return destructured object for getProperties()', () => {
     const { mail } = component.getProperties();
-    assert.equal('btopro@example.com', mail);
+    assert.equal(mail, 'btopro@example.com');
   });
 });

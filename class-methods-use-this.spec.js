@@ -25,13 +25,13 @@ describe('class-methods-use-this', () => {
       try {
         const model = new UserModel({ id: 6 });
       } catch (error) {
-        assert.equal('Missing required property name.', error.message);
+        assert.equal(error.message, 'Missing required property name.');
       }
     });
 
     it('should set the default property for missing property', () => {
       const model = new UserModel({ name: 'btopro', mail: 'btopro@example.com' });
-      assert.deepEqual({ id: null, picture: '', name: 'btopro', mail: 'btopro@example.com' }, model.getValues());
+      assert.deepEqual(model.getValues(), { id: null, picture: '', name: 'btopro', mail: 'btopro@example.com' });
     });
   });
 });

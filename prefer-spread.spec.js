@@ -23,10 +23,10 @@ describe('prefer-spread', () => {
   });
 
   it('should copy an empty array and add foobar into it', () => {
-    assert.deepEqual([{ foo: 'bar' }], copyWithFoo([]));
+    assert.deepEqual(copyWithFoo([]), [{ foo: 'bar' }]);
   });
 
   it('should copy an array and add foobar into it', () => {
-    assert.deepEqual([15, 10, 5, { foo: 'bar' }], copyWithFoo([15, 10, 5]));
+    assert.deepEqual(copyWithFoo([15, 10, 5]), [15, 10, 5, { foo: 'bar' }]);
   });
 });

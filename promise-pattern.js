@@ -42,6 +42,24 @@ const contentFixture = {
   },
 };
 
+function getUserContentFanned(name) {
+  return Promise.resolve(userFixture)
+    .then((users) => {
+      const user = _.find(users, account => account.name === name);
+      if (undefined === user) {
+        throw new Error('No user by that name.');
+      }
+      return Promise.resolve(contentFixture)
+        .then((content) => {
+          const nodes = _.find(content, node => node.uid === user.uid);
+          if (undefined === nodes) {
+            throw new Error('No nodes for that user name.');
+          }
+          return nodes;
+        });
+    });
+}
+
 function getUserContentChained(name) {
   return Promise.resolve(userFixture)
     .then(users => (_.find(users, user => user.name === name)))
@@ -58,24 +76,6 @@ function getUserContentChained(name) {
         throw new Error('No nodes for that user name.');
       }
       return nodes;
-    });
-}
-
-function getUserContentFanned(name) {
-  return Promise.resolve(userFixture)
-    .then((users) => {
-      const user = _.find(users, account => account.name === name);
-      if (undefined === user) {
-        throw new Error('No user by that name.');
-      }
-      return Promise.resolve(contentFixture)
-        .then((content) => {
-          const nodes = _.find(content, node => node.uid === user.uid);
-          if (undefined === nodes) {
-            throw new Error('No nodes for that user name.');
-          }
-          return nodes;
-        });
     });
 }
 

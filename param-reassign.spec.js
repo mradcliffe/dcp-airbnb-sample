@@ -11,7 +11,7 @@ describe('param-reassign', () => {
     it('should mutate object passed in by reference value', () => {
       const blah = {};
       paramMutate(blah);
-      assert.deepEqual({ foo: 'bar' }, blah);
+      assert.deepEqual(blah, { foo: 'bar' });
     });
   });
 
@@ -19,7 +19,7 @@ describe('param-reassign', () => {
     it('should return a copy of the parameter instead of mutating it', () => {
       let blah = {};
       blah = noParamMutate(blah);
-      assert.deepEqual({ foo: 'bar' }, blah);
+      assert.deepEqual(blah, { foo: 'bar' });
     });
   });
 

@@ -26,11 +26,11 @@ describe('underscore-dangle', () => {
 
   it('should be bar time using hidden function', () => {
     const thing = new UnderscoreDangle({ foo: 'bar' });
-    assert.equal('Bar time', thing.getBarRules2());
+    assert.equal(thing.getBarRules2(), 'Bar time');
   });
 
   it('should have fooHasBar2 set to false by default', () => {
     const thing = new UnderscoreDangle({});
-    assert.equal('No bar for you', thing.getBarRules2());
+    assert.equal(thing.getBarRules2(), 'No bar for you');
   });
 });

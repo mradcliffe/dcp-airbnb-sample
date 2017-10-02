@@ -8,10 +8,10 @@ const assert = chai.assert;
 
 describe('plusplus', () => {
   it('should equal 5 when using plusplus', () => {
-    assert.equal(5, plusPlusValue);
+    assert.equal(plusPlusValue, 5);
   });
 
   it('should equal 5 when using no-plusplus', () => {
-    assert.equal(5, noPlusPlusValue);
+    assert.equal(noPlusPlusValue, 5);
   });
 });
