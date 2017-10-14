@@ -2,47 +2,41 @@
 import * as _ from 'lodash';
 
 const userFixture = {
-  1: { uid: 1, name: 'admin', mail: 'admin@example.com' },
-  6: { uid: 6, name: 'btopro', mail: 'btopro@example.com' },
-  30: { uid: 30, name: 'mradcliffe', mail: 'mradcliffe@softpixel.com' },
+  1: { id: 1, name: 'admin' },
+  6: { id: 6, name: 'btopro' },
+  30: { id: 30, name: 'mradcliffe' },
 };
 const contentFixture = {
   11: {
-    nid: 11,
+    contentid: 11,
     title: 'Something about ELMSLN',
-    uid: 6,
+    userId: 6,
     author: 'btopro',
-    field_body: {
-      und: [
-        { value: 'Blah blah blah ELMSLN.' },
-      ],
+    body: {
+      en: ['Blah blah blah ELMSLN.'],
     },
   },
   15: {
-    nid: 15,
+    contentId: 15,
     title: 'Something about typed data',
-    uid: 30,
+    userId: 30,
     author: 'mradcliffe',
-    field_body: {
-      und: [
-        { value: 'Blah blah blah typed data.' },
-      ],
+    body: {
+      en: ['Blah blah blah typed data.'],
     },
   },
   18: {
-    nid: 18,
+    contentId: 18,
     title: 'Something about Polymer',
-    uid: 6,
+    userId: 6,
     author: 'btopro',
-    field_body: {
-      und: [
-        { value: 'Blah blah blah polymer.' },
-      ],
+    body: {
+      en: ['Blah blah blah polymer.'],
     },
   },
 };
 
-function getUserContentFanned(name) {
+const getUserContentFanned = function getUserContentFanned(name) {
   return Promise.resolve(userFixture)
     .then((users) => {
       const user = _.find(users, account => account.name === name);
@@ -51,33 +45,33 @@ function getUserContentFanned(name) {
       }
       return Promise.resolve(contentFixture)
         .then((content) => {
-          const nodes = _.find(content, node => node.uid === user.uid);
-          if (undefined === nodes) {
+          const items = _.find(content, node => node.userId === user.userId);
+          if (undefined === items) {
             throw new Error('No nodes for that user name.');
           }
-          return nodes;
+          return items;
         });
     });
-}
+};
 
-function getUserContentChained(name) {
+const getUserContentChained = function getUserContentChained(name) {
   return Promise.resolve(userFixture)
     .then(users => (_.find(users, user => user.name === name)))
     .then((user) => {
       if (undefined === user) {
         throw new Error('No user by that name.');
       }
-      return Promise.all([user.uid, contentFixture]);
+      return Promise.all([user.id, contentFixture]);
     })
     .then((results) => {
-      const [uid, content] = results;
-      const nodes = _.find(content, node => (node.uid === uid));
+      const [id, content] = results;
+      const nodes = _.find(content, node => (node.userId === id));
       if (undefined === nodes) {
         throw new Error('No nodes for that user name.');
       }
       return nodes;
     });
-}
+};
 
 export {
   userFixture,

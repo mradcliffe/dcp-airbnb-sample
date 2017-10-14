@@ -1,44 +1,24 @@
 /* eslint no-var:1 */
-function varBad(foo, bar) {
-  var bad = false;
+
+const varLetConst = function varLetConst(foo, bar) {
+  let ret = '';
+  var hoisted = 'whyyyyy';  
 
   if (foo) {
-    bad = 'foo';
+    const foonobar = 'foo';
 
-    if (bar) {
-      bad = 'foobar';
-    }
-  }
-
-  return bad;
-}
-
-function letGood(foo, bar) {
-  if (foo) {
-    let ret = 'foo';
     if (bar) {
       ret = 'foobar';
+    } else {
+      ret = foonobar;
     }
-    return ret;
   } else if (bar) {
-    const ret = 'a bar without foo is no bar at all';
-    return ret;
+    ret = 'one does not bar without foo';
+  } else {
+    ret = hoisted;
   }
 
-  return false;
-}
+  return ret;
+};
 
-function constNoChange(foo, bar) {
-  const foonobar = 'foo';
-  const foobar = 'foobar';
-
-  if (foo) {
-    if (bar) {
-      return foobar;
-    }
-    return foonobar;
-  }
-  return false;
-}
-
-export { letGood, varBad, constNoChange };
+export default varLetConst;

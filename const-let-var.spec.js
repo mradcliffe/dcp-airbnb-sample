@@ -1,42 +1,28 @@
 /* global describe it */
 /* eslint no-var:0 */
 
-import { letGood, constNoChange } from './const-let-var';
+import varLetConst from './const-let-var';
 
 const chai = require('chai');
 
-const assert = chai.assert;
+const { assert } = chai;
 
 describe('const-let-var', () => {
-  describe('letGood()', () => {
-    it('should return false', () => {
-      assert.isFalse(letGood(false, false));
+  describe('varLetConst()', () => {
+    it('should return "foo" when foo is true', () => {
+      assert.equal(varLetConst(true, false), 'foo');
     });
 
-    it('should return "foo"', () => {
-      assert.equal(letGood(true, false), 'foo');
+    it('should return "foobar" when both parameters are true', () => {
+      assert.equal(varLetConst(true, true), 'foobar');
     });
 
-    it('should return "foobar" when both parameters true', () => {
-      assert.equal(letGood(true, true), 'foobar');
+    it('should return "whyyyyy" when both parameters are false', () => {
+      assert.equal(varLetConst(false, false), 'whyyyyy');
     });
 
-    it('should return "a bar without foo is no bar at all"', () => {
-      assert.equal(letGood(false, true), 'a bar without foo is no bar at all');
-    });
-  });
-
-  describe('constNoChange()', () => {
-    it('should return false', () => {
-      assert.isFalse(constNoChange(false, true));
-    });
-
-    it('should return "foo"', () => {
-      assert.equal(constNoChange(true, false), 'foo');
-    });
-
-    it('should return "foobar" when both parameters true', () => {
-      assert.equal(constNoChange(true, true), 'foobar');
+    it('should return "one does not bar without foo" when bar is true only', () => {
+      assert.equal(varLetConst(false, true), 'one does not bar without foo');
     });
   });
 });

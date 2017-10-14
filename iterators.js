@@ -3,16 +3,18 @@
 import * as _ from 'lodash';
 
 const objFixture = {
-  1: { uid: 1, name: 'admin', mail: 'admin@example.com' },
-  6: { uid: 6, name: 'btopro', mail: 'btopro@example.com' },
-  30: { uid: 30, name: 'mradcliffe', mail: 'mradcliffe@softpixel.com' },
+  admin: { id: 1, name: 'admin' },
+  btopro: { id: 6, name: 'btopro' },
+  mradcliffe: { id: 30, name: 'mradcliffe' },
 };
 const forInValue = [];
 
+// Bad.
 for (let n in objFixture) {
   forInValue.push(objFixture[n]);
 }
 
+// Good.
 const lodashValue = _.flatMap(objFixture, item => item, []);
 
 export {

@@ -10,7 +10,7 @@ import {
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
-const assert = chai.assert;
+const { assert } = chai;
 chai.use(chaiAsPromised);
 
 describe('promise-pattern', () => {
